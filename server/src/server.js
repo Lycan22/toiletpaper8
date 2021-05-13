@@ -1,7 +1,14 @@
 const express = require('express');
 const cors = require('cors');
+const gateClient = require('./interface/snap7');
 
 const app = express();
+
+app.get('/client',cors(),(req,res)=>{
+    let openGate = new gateClient
+
+})
+
 
 app.get('/api/customers', cors(), (req, res) => {
     const customers = [
