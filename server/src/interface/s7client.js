@@ -2,6 +2,10 @@ const {S7Client} = require('s7client');
 const DI = require('./di');
 const AI = require('./ai');
 
+let diList = [];
+let aiList = [];
+
+
 const Client = () => {
     const plcSettings = {
         name: "LocalPLC",
@@ -26,6 +30,8 @@ const Client = () => {
         const res = await client.readDB(DI.dbNr, DI.dbVars);
         res.forEach(v => console.log(`${v.ident}: ${v.value}`));
         console.timeEnd('ReadDB duration');
+        await res.json(diList);
+        console.log('success'+diList);
 
     };
 
@@ -34,6 +40,8 @@ const Client = () => {
         const res = await client.readDB(AI.dbNr, AI.dbVars);
         res.forEach(v => console.log(`${v.ident}: ${v.value}`));
         console.timeEnd('ReadDB duration');
+        await res.json(aiList);
+        console.log('success'+aiList);
 
     };
 
