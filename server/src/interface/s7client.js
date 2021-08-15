@@ -31,6 +31,7 @@ const Client = () => {
         res.forEach(v => console.log(`${v.ident}: ${v.value}`));
         console.timeEnd('ReadDB duration');
         await res.toJSON(diList);
+        diList.push(res);
         console.log('success'+diList);
 
     };
